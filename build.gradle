@@ -14,8 +14,15 @@ buildscript {
     }
 }
 
+plugins {
+    id("io.freefair.lombok") version "8.0.1"
+}
+
+
 allprojects {
     apply plugin: "eclipse"
+    apply plugin: "io.freefair.lombok"
+
 
     version = '1.0'
     ext {
@@ -37,6 +44,9 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
         maven { url "https://jitpack.io" }
     }
+
+
+
 }
 
 project(":desktop") {
@@ -51,6 +61,8 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
         api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        implementation 'org.apache.logging.log4j:log4j-core:2.16.0'
+        implementation 'org.apache.logging.log4j:log4j-api:2.16.0'
         
     }
 }
@@ -62,6 +74,8 @@ project(":server") {
     dependencies {
         implementation project(":core")
         implementation 'io.vertx:vertx-core:4.4.2'
+        implementation 'org.apache.logging.log4j:log4j-core:2.16.0'
+        implementation 'org.apache.logging.log4j:log4j-api:2.16.0'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
@@ -77,6 +91,8 @@ project(":core") {
 
     dependencies {
         implementation 'io.vertx:vertx-core:4.4.2'
+        implementation 'org.apache.logging.log4j:log4j-core:2.16.0'
+        implementation 'org.apache.logging.log4j:log4j-api:2.16.0'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
