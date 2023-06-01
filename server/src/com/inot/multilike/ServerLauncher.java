@@ -11,18 +11,20 @@ public class ServerLauncher {
         NetServerOptions options = new NetServerOptions().setPort(4321);
         NetServer server = vertx.createNetServer(options);
 
+        server.connectHandler(socket -> {
+            socket.handler(buffer -> {
+                System.out.println("I received some bytes: " + buffer.length());
+            });
+        });
+
         server
             .listen()
             .onComplete(res -> {
                 if (res.succeeded()) {
                     System.out.println("Server is now listening!");
-                }
-                else {
+                } else {
                     System.out.println("Failed to bind!");
                 }
-                }
-            );
-
-
+            });
     }
 }
