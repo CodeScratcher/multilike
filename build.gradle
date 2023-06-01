@@ -45,6 +45,7 @@ project(":desktop") {
 
     dependencies {
         implementation project(":core")
+        implementation 'io.vertx:vertx-core:4.4.2'
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
@@ -60,6 +61,7 @@ project(":server") {
 
     dependencies {
         implementation project(":core")
+        implementation 'io.vertx:vertx-core:4.4.2'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
@@ -74,6 +76,7 @@ project(":core") {
 
 
     dependencies {
+        implementation 'io.vertx:vertx-core:4.4.2'
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
