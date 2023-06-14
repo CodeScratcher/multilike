@@ -25,10 +25,10 @@ public class Player implements SpriteEntity {
                     deltaY -= 5;
                     break;
                 case LEFT:
-                    deltaX += 5;
+                    deltaX -= 5;
                     break;
                 case RIGHT:
-                    deltaX -= 5;
+                    deltaX += 5;
                     break;
                 default:
                     break;

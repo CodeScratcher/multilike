@@ -1,11 +1,13 @@
 package com.inot.multilike;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Input.Keys;
 import com.inot.multilike.coordinates.Camera;
 import com.inot.multilike.coordinates.ScreenCoordinates;
 import com.inot.multilike.entity.Entity;
@@ -14,7 +16,9 @@ import com.inot.multilike.entity.SpriteEntity;
 import com.inot.multilike.model.GameState;
 import com.inot.multilike.textures.TextureID;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameScreen implements Screen {
@@ -44,6 +48,25 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
+        List<Event> eventList = new ArrayList<>();
+
+        if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+            eventList.add(Event.LEFT);
+        }
+        if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+            eventList.add(Event.RIGHT);
+        }
+        if (Gdx.input.isKeyPressed(Keys.UP)) {
+            eventList.add(Event.UP);
+        }
+        if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+            eventList.add(Event.DOWN);
+        }
+
+        for (Entity entity : state.getEntityList()) {
+            entity.update(state, eventList);
+        }
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
