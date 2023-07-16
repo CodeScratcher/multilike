@@ -76,6 +76,7 @@ project(":server") {
         implementation 'io.vertx:vertx-core:4.4.2'
         implementation 'org.apache.logging.log4j:log4j-core:2.16.0'
         implementation 'org.apache.logging.log4j:log4j-api:2.16.0'
+        api "com.badlogicgames.gdx:gdx-backend-headless:$gdxVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
