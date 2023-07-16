@@ -16,10 +16,7 @@ import com.inot.multilike.entity.SpriteEntity;
 import com.inot.multilike.model.GameState;
 import com.inot.multilike.textures.TextureID;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GameScreen implements Screen {
     GameState state;
@@ -29,6 +26,7 @@ public class GameScreen implements Screen {
     Map<TextureID, Sprite> spritesheet;
 
     SpriteBatch spriteBatch;
+    UUID player;
 
     @Override
     public void show() {
@@ -64,15 +62,13 @@ public class GameScreen implements Screen {
             eventList.add(Event.DOWN);
         }
 
-        for (Entity entity : state.getEntityList()) {
-            entity.update(state, eventList);
-        }
+        state.update(eventList);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
 
-        for (Entity entity : state.getEntityList()) {
+        for (Entity entity : state.getEntityList().values()) {
             if (entity instanceof SpriteEntity) {
                 SpriteEntity spriteEntity = (SpriteEntity) entity;
 
