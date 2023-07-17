@@ -1,6 +1,7 @@
 package com.inot.multilike;
 
 import com.badlogic.gdx.Screen;
+import com.inot.multilike.model.GameState;
 import io.vertx.core.Vertx;
 import io.vertx.core.net.NetServer;
 import io.vertx.core.net.NetServerOptions;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class ServerScreen implements Screen {
     List<NetSocket> sockets;
+    GameState state;
     @Override
     public void show() {
         Vertx vertx = Vertx.vertx();
@@ -43,7 +45,7 @@ public class ServerScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
+        state.update(null, delta);
     }
 
     @Override
