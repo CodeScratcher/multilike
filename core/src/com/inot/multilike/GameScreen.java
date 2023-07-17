@@ -62,7 +62,7 @@ public class GameScreen implements Screen {
             eventList.add(Event.DOWN);
         }
 
-        state.update(eventList);
+        state.update(eventList, delta);
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);

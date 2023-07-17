@@ -5,7 +5,6 @@ import com.inot.multilike.coordinates.WorldCoordinates;
 import com.inot.multilike.model.GameState;
 import com.inot.multilike.textures.TextureID;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements SpriteEntity {
@@ -14,7 +13,7 @@ public class Player implements SpriteEntity {
         coords = new WorldCoordinates(0, 0);
     }
     @Override
-    public void update(GameState state, List<Event> events) {
+    public void update(GameState state, List<Event> events, float delta) {
         for (Event i : events) {
             int deltaX = 0, deltaY = 0;
             switch (i) {

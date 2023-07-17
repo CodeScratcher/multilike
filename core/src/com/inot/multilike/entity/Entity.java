@@ -6,5 +6,5 @@ import com.inot.multilike.model.GameState;
 import java.util.List;
 
 public interface Entity {
-    void update(GameState state, List<Event> events);
+    void update(GameState state, List<Event> events, float delta);
 }
