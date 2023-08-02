@@ -29,6 +29,11 @@ public class ServerScreen implements Screen {
             UUID uuid = state.addEntity(new Player());
             sockets.put(uuid, socket);
             socket.write(uuid.toString());
+            try {
+                socket.write(mapper.writeValueAsString(state));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             socket.handler(buffer -> {
                 try {
                     mapper.readValue(buffer.toString(), EventType.class);
