@@ -1,6 +1,6 @@
 package com.inot.multilike.entity;
 
-import com.inot.multilike.Event;
+import com.inot.multilike.EventType;
 import com.inot.multilike.coordinates.WorldCoordinates;
 import com.inot.multilike.model.GameState;
 import com.inot.multilike.textures.TextureID;
@@ -13,8 +13,8 @@ public class Player implements SpriteEntity {
         coords = new WorldCoordinates(0, 0);
     }
     @Override
-    public void update(GameState state, List<Event> events, float delta) {
-        for (Event i : events) {
+    public void update(GameState state, List<EventType> events, float delta) {
+        for (EventType i : events) {
             int deltaX = 0, deltaY = 0;
             switch (i) {
                 case UP:

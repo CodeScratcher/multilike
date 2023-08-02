@@ -1,6 +1,6 @@
 package com.inot.multilike.model;
 
-import com.inot.multilike.Event;
+import com.inot.multilike.EventType;
 import com.inot.multilike.entity.Entity;
 import lombok.Getter;
 
@@ -24,7 +24,7 @@ public class GameState {
         return entityList.get(id);
     }
 
-    public void update(List<Event> events, float delta) {
+    public void update(List<EventType> events, float delta) {
         for (Entity entity : entityList.values()) {
             entity.update(this, events, delta);
         }

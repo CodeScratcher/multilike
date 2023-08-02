@@ -1,6 +1,8 @@
 sourceCompatibility = 1.8
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.26'
+    implementation 'com.fasterxml:jackson-xml-databind:0.6.2'
+    implementation 'com.fasterxml:jackson-xml-databind:0.6.2'
 }
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 

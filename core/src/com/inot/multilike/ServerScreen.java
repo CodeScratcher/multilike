@@ -1,33 +1,40 @@
 package com.inot.multilike;
 
 import com.badlogic.gdx.Screen;
+import com.inot.multilike.entity.Player;
 import com.inot.multilike.model.GameState;
 import io.vertx.core.Vertx;
 import io.vertx.core.net.NetServer;
 import io.vertx.core.net.NetServerOptions;
 import io.vertx.core.net.NetSocket;
+import org.codehaus.jackson.map.ObjectMapper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 public class ServerScreen implements Screen {
-    List<NetSocket> sockets;
+    Map<UUID, NetSocket> sockets;
     GameState state;
     @Override
     public void show() {
         Vertx vertx = Vertx.vertx();
 
-        sockets = new ArrayList<>();
+        sockets = new HashMap<>();
         NetServerOptions options = new NetServerOptions().setPort(4321);
         NetServer server = vertx.createNetServer(options);
 
-        server.connectHandler(socket -> {
-            sockets.add(socket);
-            socket.handler(buffer -> {
+        ObjectMapper mapper = new ObjectMapper();
 
-                for (NetSocket sock : sockets) {
-                    System.out.println(buffer);
-                    sock.write(buffer);
+        server.connectHandler(socket -> {
+            UUID uuid = state.addEntity(new Player());
+            sockets.put(uuid, socket);
+            socket.write(uuid.toString());
+            socket.handler(buffer -> {
+                try {
+                    mapper.readValue(buffer.toString(), EventType.class);
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             });
         });

@@ -1,7 +1,6 @@
 package com.inot.multilike;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
@@ -47,19 +46,19 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
 
-        List<Event> eventList = new ArrayList<>();
+        List<EventType> eventList = new ArrayList<>();
 
         if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-            eventList.add(Event.LEFT);
+            eventList.add(EventType.LEFT);
         }
         if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            eventList.add(Event.RIGHT);
+            eventList.add(EventType.RIGHT);
         }
         if (Gdx.input.isKeyPressed(Keys.UP)) {
-            eventList.add(Event.UP);
+            eventList.add(EventType.UP);
         }
         if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-            eventList.add(Event.DOWN);
+            eventList.add(EventType.DOWN);
         }
 
         state.update(eventList, delta);

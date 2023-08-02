@@ -1,6 +1,6 @@
 package com.inot.multilike;
 
-public enum Event {
+public enum EventType {
     LEFT,
     RIGHT,
     UP,
